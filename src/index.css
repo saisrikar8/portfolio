@@ -1,0 +1,759 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: #003262;
+    color: white;
+  }
+  ::-moz-selection {
+    background-color: #003262;
+    color: white;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Dynamic Mesh Gradient */
+.mesh-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #f8f8f8;
+  background-image:
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 50, 98, 0.03) 0%, transparent 40%),
+    radial-gradient(
+      circle at calc(100% - var(--mouse-x)) calc(100% - var(--mouse-y)),
+      rgba(26, 26, 26, 0.02) 0%,
+      transparent 50%
+    ),
+    /* Blueprint grid — a fine 48px cell with a bolder line every 4th cell. */
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 50, 98, 0.09) 0,
+      rgba(0, 50, 98, 0.09) 1px,
+      transparent 1px,
+      transparent 192px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 50, 98, 0.09) 0,
+      rgba(0, 50, 98, 0.09) 1px,
+      transparent 1px,
+      transparent 192px
+    ),
+    repeating-linear-gradient(
+      to right,
+      rgba(0, 50, 98, 0.05) 0,
+      rgba(0, 50, 98, 0.05) 1px,
+      transparent 1px,
+      transparent 48px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 50, 98, 0.05) 0,
+      rgba(0, 50, 98, 0.05) 1px,
+      transparent 1px,
+      transparent 48px
+    );
+  transition: background-image 0.5s ease;
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Cursor */
+body {
+  cursor: none;
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(0, 50, 98, 0.8);
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+.custom-cursor.hovering {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 50, 98, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+/* Scroll Edge Masks — content nearing the top or bottom of the viewport
+   blurs and fades out under a feathered band, rather than being clipped by
+   a hard edge. The blur is fixed to the viewport (not scroll-linked JS), so
+   whatever is currently passing through gets the effect; the mask-image
+   feathers both the blur and the color falloff so there's no visible line. */
+.edge-mask-top,
+.edge-mask-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 40;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.edge-mask-top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(248, 248, 248, 0.85), rgba(248, 248, 248, 0));
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+}
+.edge-mask-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(248, 248, 248, 0.85), rgba(248, 248, 248, 0));
+  mask-image: linear-gradient(to top, black, transparent);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+}
+
+@media (max-width: 768px) {
+  .edge-mask-top,
+  .edge-mask-bottom {
+    height: 72px;
+  }
+}
+
+/* Progress Hairline */
+.progress-hairline {
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  width: 1px;
+  height: 0%;
+  background-color: #003262;
+  z-index: 50;
+  transition: height 0.1s;
+}
+
+@media (max-width: 768px) {
+  .progress-hairline {
+    left: 1rem;
+  }
+  body {
+    cursor: auto;
+  }
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* Typography Utilities */
+.hero-title {
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+}
+.publication-title {
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+}
+
+.publication-title::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.2s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+article:hover .publication-title::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Link Hover */
+.link-hover {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.link-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.2s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.link-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Magnetic Links */
+.magnetic-wrap {
+  display: inline-block;
+}
+
+/* Animations */
+.word-mask {
+  overflow: hidden;
+  display: inline-flex;
+  vertical-align: top;
+}
+.word-mask span {
+  transform: translateY(100%);
+  animation: revealWord 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+@keyframes revealWord {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Jump — publication/project cards pop in individually as they cross
+   into view, with a slight overshoot so they "land" rather than fade.
+   Once scrolled past, they fade and drift upward like a carousel; the state
+   is driven by IntersectionObserver toggling classes (not a one-shot
+   animation), so scrolling back down reverses the same transition. */
+.card-jump {
+  opacity: 0;
+  transform: translateY(64px) scale(0.92) rotate(-1deg);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom left;
+  will-change: transform, opacity;
+}
+.card-jump.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+.card-jump.exited {
+  opacity: 0;
+  transform: translateY(-56px) scale(0.96) rotate(0deg);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* TERRA chart — an inline version of the research mini-charts, with only
+   the axes added. Its CSS variable is updated directly from scroll position. */
+.terra-chart {
+  padding: 0 0 1.25rem;
+}
+@media (min-width: 1024px) {
+  .terra-chart {
+    position: absolute;
+    top: 4rem;
+    left: calc(36rem + 2.5rem);
+    width: min(32vw, 38rem);
+    z-index: 1;
+  }
+}
+.terra-bar {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding: 3px;
+  margin: -3px;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.terra-bar-fill {
+  width: 100%;
+  background-color: #003262;
+  opacity: 0.65;
+  transition: opacity 180ms ease;
+}
+.terra-plot {
+  position: relative;
+  height: 132px;
+  padding: 0 2px 18px 12px;
+}
+.terra-columns {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+}
+.terra-y-axis,
+.terra-x-axis {
+  position: absolute;
+  display: block;
+  background-color: rgba(0, 50, 98, 0.45);
+  transform-origin: bottom left;
+}
+.terra-y-axis {
+  bottom: 18px;
+  left: 4px;
+  width: 1px;
+  height: calc(100% - 18px);
+  transform: scaleY(var(--chart-progress));
+}
+.terra-x-axis {
+  bottom: 18px;
+  left: 4px;
+  width: calc(100% - 4px);
+  height: 1px;
+  transform: scaleX(var(--chart-progress));
+}
+.terra-bar-track {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: end;
+}
+.terra-bar-name {
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 50%;
+  width: max-content;
+  max-width: 52px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.terra-chart .terra-bar:hover,
+.terra-chart .terra-bar:focus-visible,
+.terra-chart .terra-bar.is-active {
+  transform: translateY(-3px);
+  outline: none;
+}
+.terra-chart .terra-bar:hover .terra-bar-fill,
+.terra-chart .terra-bar:focus-visible .terra-bar-fill,
+.terra-chart .terra-bar.is-active .terra-bar-fill {
+  background-color: #0a4d85;
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .terra-bar,
+  .terra-bar-fill {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Scroll Hint — bobbing cue under the hero, gone once the visitor scrolls. */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+.scroll-hint:hover {
+  opacity: 1;
+}
+.scroll-hint-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.scroll-hint-caret {
+  animation: scrollHintBob 1.6s ease-in-out infinite;
+}
+@keyframes scrollHintBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint-caret {
+    animation: none;
+  }
+}
+
+/* Grid Nodes — clickable markers in the side gutters, each surfacing a real
+   stat from the research. Hidden below lg: the gutter isn't wide enough to
+   hold one without overlapping the content column. */
+.grid-node {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 5;
+}
+
+@media (min-width: 1024px) {
+  .grid-node {
+    display: flex;
+  }
+}
+
+.grid-node-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #003262;
+  opacity: 0.35;
+  transition: transform 0.25s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.25s ease;
+}
+.grid-node:hover .grid-node-dot,
+.grid-node:focus-visible .grid-node-dot {
+  opacity: 1;
+  transform: scale(1.8);
+}
+
+/* Ambient "breathing" halo, on its own pseudo-element so it never fights
+   the dot's own hover transform/opacity for the same animated property. */
+.grid-node-dot::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background-color: #003262;
+  opacity: 0;
+  animation: nodeHalo 3.2s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
+}
+@keyframes nodeHalo {
+  0%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.7);
+    opacity: 0.14;
+  }
+}
+.grid-node:hover .grid-node-dot::before,
+.grid-node:focus-visible .grid-node-dot::before {
+  animation-play-state: paused;
+  opacity: 0;
+}
+.grid-node-dot.pinging {
+  animation: nodePing 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes nodePing {
+  from {
+    box-shadow: 0 0 0 0 rgba(0, 50, 98, 0.45);
+  }
+  to {
+    box-shadow: 0 0 0 16px rgba(0, 50, 98, 0);
+  }
+}
+
+.grid-node-tip {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 50, 98, 0.15);
+  padding: 4px 10px;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  animation: nodeTipIn 0.15s ease-out;
+}
+@keyframes nodeTipIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-node-dot.pinging,
+  .grid-node-dot::before {
+    animation: none;
+  }
+  .grid-node-tip {
+    animation: none;
+  }
+}
+
+/* Hairline Divider Drawing */
+.hairline-divider {
+  height: 1px;
+  width: 0%;
+  background-color: #e0e0e0;
+  transition: width 1.2s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.hairline-divider.drawn {
+  width: 100%;
+}
+
+/* Inline Stats — publication metrics shown directly under the description,
+   always visible rather than tucked behind a hover state. */
+.inline-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+.inline-stat-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003262;
+  line-height: 1;
+}
+.inline-stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555;
+  margin-top: 0.4rem;
+}
+.stat-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 36px;
+  width: 90px;
+}
+.stat-chart-bar {
+  flex: 1;
+  background-color: #003262;
+  opacity: 0.35;
+  border-radius: 1px;
+  animation: pulseBar 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseBar {
+  from {
+    transform: scaleY(0.92);
+  }
+  to {
+    transform: scaleY(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section,
+  .card-jump,
+  .card-jump.visible,
+  .card-jump.exited {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .word-mask span {
+    animation: none;
+    transform: none;
+  }
+  .stat-chart-bar {
+    animation: none;
+  }
+}
+
+/* Chapter Nav — bottom-fixed section index. */
+.chapter-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  justify-content: center;
+  gap: 3rem;
+  padding: 0.9rem 2rem;
+  background: rgba(248, 248, 248, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid #e0e0e0;
+}
+.chapter-nav-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #555;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.chapter-nav-numeral {
+  font-style: italic;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85rem;
+}
+.chapter-nav-item:hover,
+.chapter-nav-item.active {
+  color: #003262;
+  border-bottom-color: #003262;
+}
+
+/* Terminal window — decorative, fills the hero's whitespace. */
+.terminal-window {
+  position: absolute;
+  z-index: 20;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 50, 98, 0.15);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.25);
+}
+.terminal-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: #e4e4e4;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.terminal-titlebar:active {
+  cursor: grabbing;
+}
+.terminal-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+.terminal-dot-red {
+  background-color: #ff5f57;
+}
+.terminal-dot-yellow {
+  background-color: #febc2e;
+}
+.terminal-dot-green {
+  background-color: #28c840;
+}
+.terminal-titlebar-label {
+  margin-left: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: #666;
+}
+.terminal-body {
+  flex: 1;
+  background: #151515;
+  color: #e8e8e8;
+  padding: 28px;
+  font-size: 16px;
+  line-height: 1.9;
+  overflow: auto;
+}
+.terminal-prompt {
+  color: #4ade80;
+  margin-right: 6px;
+}
+.terminal-output {
+  color: #f8f8f8;
+}
+.terminal-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background-color: #f8f8f8;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: terminalBlink 1s steps(1) infinite;
+}
+@keyframes terminalBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor {
+    animation: none;
+  }
+}
+
+.terminal-resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  cursor: nwse-resize;
+  touch-action: none;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 45%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.35) 55%,
+    transparent 55%,
+    transparent 65%,
+    rgba(255, 255, 255, 0.35) 65%,
+    rgba(255, 255, 255, 0.35) 75%,
+    transparent 75%
+  );
+}

@@ -1,4 +1,3 @@
-/** Splits text into masked words that slide up on load, 0.1s apart. */
 export default function WordReveal({ text, className = '', id }) {
   const words = text.trim().split(/\s+/)
 

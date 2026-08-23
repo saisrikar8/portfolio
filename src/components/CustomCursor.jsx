@@ -1,9 +1,5 @@
 import { useEffect, useRef } from 'react'
 
-/**
- * Blend-mode dot that lerps toward the pointer, swells over interactive
- * elements, and feeds the mesh gradient its --mouse-x / --mouse-y vars.
- */
 export default function CustomCursor() {
   const cursorRef = useRef(null)
 
@@ -31,7 +27,6 @@ export default function CustomCursor() {
       frame = requestAnimationFrame(render)
     }
 
-    // Delegated so React can add and remove interactables freely.
     const onOver = (e) => {
       if (e.target.closest?.('a, button, .interactable')) cursor.classList.add('hovering')
     }

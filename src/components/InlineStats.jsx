@@ -1,8 +1,3 @@
-/**
- * Real metrics shown directly under each publication — not hidden behind
- * a hover state. Hiding the actual substance of the work behind an
- * interaction is exactly the kind of over-precious minimalism to avoid.
- */
 export default function InlineStats({ stats, chart }) {
   const max = Math.max(...chart, 0.0001)
 

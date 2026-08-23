@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { research, projects } from '../data/profile'
 
-/**
- * Measures each article's actual rendered top (relative to this rail) and
- * positions its marker there directly, rather than guessing a fixed gap.
- * A static gap (the previous approach) drifts out of sync the moment a
- * card's description gets longer or shorter — which is exactly what
- * happened: the SELENE/Springer Nature marker was landing next to HERMES
- * because the two publications' text blocks aren't the same height.
- */
 function useArticleTops(sectionId, wrapperRef, itemCount) {
   const [tops, setTops] = useState([])
 
@@ -33,8 +25,6 @@ function useArticleTops(sectionId, wrapperRef, itemCount) {
       ro.disconnect()
       window.removeEventListener('resize', measure)
     }
-    // itemCount forces a re-measure when the underlying data array's length
-    // changes (e.g. a project being added or removed).
   }, [sectionId, wrapperRef, itemCount])
 
   return tops

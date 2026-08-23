@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 
-/** Vertical hairline down the left gutter, filled by scroll progress. */
 export default function ProgressHairline() {
   const barRef = useRef(null)
 

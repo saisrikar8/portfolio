@@ -1,22 +1,11 @@
-// ---------------------------------------------------------------------------
-// Everything on the site is driven from this file.
-//
-// Research/project facts, metrics and links below were pulled from the public
-// GitHub account `saisrikar8` (repo descriptions, READMEs and, for TERRA, the
-// committed `evaluation_results/metrics_comparison.csv`).
-//
-// TWO VALUES ARE NOT DISCOVERABLE FROM GITHUB AND ARE MARKED `// TODO`:
-// the LinkedIn URL and the public contact email. Change them here.
-// ---------------------------------------------------------------------------
-
 export const profile = {
   name: 'Sai Srikar Tummala',
   tagline: 'Data Science @ UC Berkeley. ML for space systems and geospatial modeling.',
   github: 'https://github.com/saisrikar8',
   githubHandle: '@saisrikar8',
-  linkedin: 'https://www.linkedin.com/in/saisrikar8', // TODO: confirm your LinkedIn slug
-  linkedinHandle: 'In/saisrikar',
-  email: 'vibecoderly@proton.me', // TODO: swap for the address you want published
+  linkedin: 'https://www.linkedin.com/in/sai-srikar-t-552b59361',
+  linkedinHandle: 'Sai Srikar Tummala',
+  email: 'tummalasaisrikar@berkeley.edu',
   year: 2026,
 }
 
@@ -37,7 +26,6 @@ export const research = [
       { label: 'Accuracy', value: '87.5%' },
       { label: 'Recall', value: '0.931' },
     ],
-    // Bars are the model's headline scores (accuracy, precision, recall, F1, AP)
     chart: [0.875, 0.86, 0.931, 0.894, 0.961],
   },
   {
@@ -53,7 +41,6 @@ export const research = [
       { label: 'R²', value: '0.834' },
       { label: 'MAE', value: '0.0043' },
     ],
-    // Relative R² across the benchmarked models (SELENE, MC variant, LinReg, XGBoost, SAINT)
     chart: [0.834, 0.827, 0.388, 0.011, 0.02],
   },
 ]
@@ -67,11 +54,10 @@ export const projects = [
       'A high-resolution geospatial pipeline for terrain change modeling. TERRA benchmarks U-Net, plain CNN, ViT and ConvLSTM architectures against a Landlab physics simulation across 12.3M evaluated pixels, learning rainfall-driven erosion directly from multi-modal raster inputs. The ViT leads at R² = 0.891, cutting mean absolute error to roughly a quarter of the physically-motivated linear baseline.',
     href: 'https://github.com/saisrikar8/terrain-modeling',
     demo: {
-      label: 'terrain-modeling-demo-client.vercel.app',
-      href: 'https://terrain-modeling-demo-client.vercel.app',
+      label: 'terra.ssrikar.dev',
+      href: 'https://terra.ssrikar.dev',
     },
     hasVisual: true,
-    // model comparison from evaluation_results/metrics_comparison.csv
     models: [
       { name: 'ViT', r2: 0.8913, mae: 5.34e-5 },
       { name: 'U-Net', r2: 0.8262, mae: 6.86e-5 },

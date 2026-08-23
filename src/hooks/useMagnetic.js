@@ -1,9 +1,5 @@
 import { useEffect, useRef } from 'react'
 
-/**
- * Magnetic link: the element chases the pointer at 30% of its offset from the
- * wrapper's centre, then eases back on leave.
- */
 export function useMagnetic() {
   const wrapRef = useRef(null)
   const elemRef = useRef(null)

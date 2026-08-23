@@ -47,7 +47,6 @@ export default function App() {
         </section>
 
         <div className="md:grid md:grid-cols-[2fr_1fr] md:gap-12 lg:gap-24 mt-32">
-          {/* Main Content Area (60%) */}
           <div className="flex flex-col gap-32">
             <section
               className="reveal-section flex flex-col gap-16 relative"
@@ -97,7 +96,6 @@ export default function App() {
             <Footer />
           </div>
 
-          {/* Right Rail (40%) - Desktop Only */}
           <RightRail />
         </div>
       </main>

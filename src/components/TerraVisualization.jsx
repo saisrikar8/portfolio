@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-/** Inline, scroll-linked model comparison for TERRA. */
 export default function TerraVisualization({ models }) {
   const chartRef = useRef(null)
   const [progress, setProgress] = useState(0)
@@ -12,7 +11,6 @@ export default function TerraVisualization({ models }) {
 
     const update = () => {
       const { top } = chart.getBoundingClientRect()
-      // Progress from first entering the viewport to its natural reading position.
       setProgress(Math.min(1, Math.max(0, (window.innerHeight - top) / (window.innerHeight * 0.55))))
     }
 

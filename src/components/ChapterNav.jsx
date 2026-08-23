@@ -7,20 +7,6 @@ const CHAPTERS = [
   { id: 'connect', numeral: 'IV', label: 'Connect' },
 ]
 
-/**
- * Bottom-fixed section index — a scrollspy nav, not decoration. Replaces
- * the small hover-dot markers with one clear, always-legible way to see
- * where you are and jump anywhere else.
- *
- * Driven directly by scroll position rather than IntersectionObserver: when
- * two sections both cross a thin observed band at once (tall sections,
- * fast scroll), the observer's entries array isn't guaranteed to arrive in
- * document order, so whichever entry happens to land last in that batch
- * would silently win — not necessarily the section actually in view. This
- * is the same failure class already fixed once this session for the
- * card-jump reveal; picking "the last section whose top has crossed a
- * reference line" directly has no such ambiguity.
- */
 export default function ChapterNav() {
   const [active, setActive] = useState(CHAPTERS[0].id)
 

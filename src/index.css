@@ -29,7 +29,6 @@
   }
 }
 
-/* Dynamic Mesh Gradient */
 .mesh-background {
   position: fixed;
   top: 0;
@@ -46,7 +45,6 @@
       rgba(26, 26, 26, 0.02) 0%,
       transparent 50%
     ),
-    /* Blueprint grid — a fine 48px cell with a bolder line every 4th cell. */
     repeating-linear-gradient(
       to right,
       rgba(0, 50, 98, 0.09) 0,
@@ -90,7 +88,6 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Custom Cursor */
 body {
   cursor: none;
 }
@@ -116,11 +113,6 @@ body {
   backdrop-filter: blur(2px);
 }
 
-/* Scroll Edge Masks — content nearing the top or bottom of the viewport
-   blurs and fades out under a feathered band, rather than being clipped by
-   a hard edge. The blur is fixed to the viewport (not scroll-linked JS), so
-   whatever is currently passing through gets the effect; the mask-image
-   feathers both the blur and the color falloff so there's no visible line. */
 .edge-mask-top,
 .edge-mask-bottom {
   position: fixed;
@@ -152,7 +144,6 @@ body {
   }
 }
 
-/* Progress Hairline */
 .progress-hairline {
   position: fixed;
   top: 0;
@@ -176,7 +167,6 @@ body {
   }
 }
 
-/* Typography Utilities */
 .hero-title {
   font-size: clamp(3rem, 9vw, 7rem);
   line-height: 0.95;
@@ -209,7 +199,6 @@ article:hover .publication-title::after {
   transform-origin: bottom left;
 }
 
-/* Link Hover */
 .link-hover {
   position: relative;
   display: inline-block;
@@ -232,12 +221,10 @@ article:hover .publication-title::after {
   transform-origin: bottom left;
 }
 
-/* Magnetic Links */
 .magnetic-wrap {
   display: inline-block;
 }
 
-/* Animations */
 .word-mask {
   overflow: hidden;
   display: inline-flex;
@@ -263,11 +250,6 @@ article:hover .publication-title::after {
   transform: translateY(0);
 }
 
-/* Card Jump — publication/project cards pop in individually as they cross
-   into view, with a slight overshoot so they "land" rather than fade.
-   Once scrolled past, they fade and drift upward like a carousel; the state
-   is driven by IntersectionObserver toggling classes (not a one-shot
-   animation), so scrolling back down reverses the same transition. */
 .card-jump {
   opacity: 0;
   transform: translateY(64px) scale(0.92) rotate(-1deg);
@@ -289,8 +271,6 @@ article:hover .publication-title::after {
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* TERRA chart — an inline version of the research mini-charts, with only
-   the axes added. Its CSS variable is updated directly from scroll position. */
 .terra-chart {
   padding: 0 0 1.25rem;
 }
@@ -388,7 +368,6 @@ article:hover .publication-title::after {
   }
 }
 
-/* Scroll Hint — bobbing cue under the hero, gone once the visitor scrolls. */
 .scroll-hint {
   display: flex;
   flex-direction: column;
@@ -423,9 +402,6 @@ article:hover .publication-title::after {
   }
 }
 
-/* Grid Nodes — clickable markers in the side gutters, each surfacing a real
-   stat from the research. Hidden below lg: the gutter isn't wide enough to
-   hold one without overlapping the content column. */
 .grid-node {
   position: absolute;
   width: 24px;
@@ -460,8 +436,6 @@ article:hover .publication-title::after {
   transform: scale(1.8);
 }
 
-/* Ambient "breathing" halo, on its own pseudo-element so it never fights
-   the dot's own hover transform/opacity for the same animated property. */
 .grid-node-dot::before {
   content: '';
   position: absolute;
@@ -538,7 +512,6 @@ article:hover .publication-title::after {
   }
 }
 
-/* Hairline Divider Drawing */
 .hairline-divider {
   height: 1px;
   width: 0%;
@@ -549,8 +522,6 @@ article:hover .publication-title::after {
   width: 100%;
 }
 
-/* Inline Stats — publication metrics shown directly under the description,
-   always visible rather than tucked behind a hover state. */
 .inline-stats {
   display: flex;
   flex-wrap: wrap;
@@ -617,7 +588,6 @@ article:hover .publication-title::after {
   }
 }
 
-/* Chapter Nav — bottom-fixed section index. */
 .chapter-nav {
   position: fixed;
   left: 0;
@@ -657,7 +627,6 @@ article:hover .publication-title::after {
   border-bottom-color: #003262;
 }
 
-/* Terminal window — decorative, fills the hero's whitespace. */
 .terminal-window {
   position: absolute;
   z-index: 20;

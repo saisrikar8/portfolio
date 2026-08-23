@@ -1,6 +1,5 @@
 import { MagnifyingGlass, Cube, User, GithubLogo, LinkedinLogo, EnvelopeSimple } from '@phosphor-icons/react'
 
-/** Small glyphs that sit before each section number. */
 export function ResearchIcon(props) {
   return <MagnifyingGlass weight="light" aria-hidden="true" {...props} />
 }

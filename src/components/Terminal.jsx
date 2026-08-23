@@ -10,20 +10,6 @@ const MAX_WIDTH = 720
 const MAX_HEIGHT = 520
 const GAP = 40
 
-/**
- * A decorative terminal window that fills the whitespace beside the About
- * text — draggable by its titlebar, resizable from its corner handle.
- *
- * Position/size are absolute-positioned in px relative to the nearest
- * positioned ancestor (the About section), computed on mount by actually
- * measuring `anchorSelector`'s rendered box rather than guessing a
- * breakpoint — the previous fixed-width-inside-a-flex-row approach broke
- * (wrapped below instead of sitting beside the text, twice) because a
- * static width plus a variable-width paragraph don't reliably fit
- * together at every viewport size. Every drag/resize step is clamped
- * against the live viewport width so this can never push the page into
- * horizontal overflow, regardless of where the user drags it to.
- */
 export default function Terminal({ anchorSelector }) {
   const [typed, setTyped] = useState('')
   const [pos, setPos] = useState(null)
@@ -36,7 +22,6 @@ export default function Terminal({ anchorSelector }) {
   posRef.current = pos
   sizeRef.current = size
 
-  // Typing animation.
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
@@ -52,9 +37,6 @@ export default function Terminal({ anchorSelector }) {
     return () => window.clearInterval(id)
   }, [])
 
-  // Default placement: beside the anchor paragraph if there's room, else
-  // directly below it. Recomputed on window resize until the user drags
-  // or resizes the window themselves, at which point their choice sticks.
   useEffect(() => {
     const compute = () => {
       if (userMovedRef.current) return

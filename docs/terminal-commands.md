@@ -38,3 +38,7 @@ The title bar drags the window. The bottom corner resizes it with pointer input 
 Help now opens at the beginning of its response so the navigation commands are visible. `help go` provides a separate navigation guide with individual examples.
 
 Every command now supports `help <command>`, `<command> --help`, and `<command> help`. Navigation shortcuts also have help entries. Tab completion includes the per-command help topics. Unknown help topics return a helpful message without changing the page.
+
+## Phone behavior
+
+At widths up to 650px or with a coarse primary pointer, the terminal stays in the hero. Dragging, resizing, docking, and movement/size commands are disabled; command output explains the desktop-only restriction. Navigation and scroll commands still control the page, without floating the terminal; navigation dismisses the phone keyboard. The terminal returns inline if a floating desktop viewport switches into phone/touch mode. Mobile input uses 16px type to avoid automatic input zoom. Desktop movement and resizing are unchanged.

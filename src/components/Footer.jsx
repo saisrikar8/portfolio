@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="pt-16 pb-8 md:pb-24 mt-16 reveal-section" ref={ref}>
       <Divider className="mb-8" />
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 font-mono text-sm text-on-surface-variant">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 font-sans text-sm text-on-surface-variant">
         <span>© {profile.year} {profile.name}</span>
         <div className="flex gap-6">
           <MagneticLink href={profile.github}>GitHub</MagneticLink>

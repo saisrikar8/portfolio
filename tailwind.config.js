@@ -13,7 +13,7 @@ export default {
       },
       fontFamily: {
         serif: ['"Source Serif 4"', 'serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
+        sans: ['Arial', 'Helvetica', 'sans-serif'],
       },
     },
   },

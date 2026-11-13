@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g transform="rotate(-5 30 34)">
+    <rect x="8" y="12" width="48" height="48" rx="13" fill="#282735"/>
+    <rect x="4" y="7" width="48" height="48" rx="13" fill="#ffd564" stroke="#282735" stroke-width="2.5"/>
+    <text x="28" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#282735">ST</text>
+  </g>
+  <path d="M53 1v22M42 12h22M45 4l16 16M45 20 61 4" stroke="#282735" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

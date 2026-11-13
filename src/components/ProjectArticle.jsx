@@ -7,7 +7,7 @@ export default function ProjectArticle({ item }) {
 
   return (
     <article className="relative interactable card-jump" ref={ref}>
-      <div className="md:hidden mb-2 font-mono text-sm text-on-surface-variant">{item.status}</div>
+      <div className="md:hidden mb-2 font-sans text-sm text-on-surface-variant">{item.status}</div>
       <h3 className="publication-title font-light mb-4">
         <a href={item.href} target="_blank" rel="noreferrer">
           {item.title}
@@ -28,14 +28,14 @@ export default function ProjectArticle({ item }) {
 
       {item.hasVisual && item.demo && (
         <div className="mt-4 clear-both">
-          <MagneticLink href={item.demo.href} className="font-mono text-sm">
+          <MagneticLink href={item.demo.href} className="font-sans text-sm">
             {item.demo.label}
           </MagneticLink>
         </div>
       )}
 
       {item.link && (
-        <MagneticLink href={item.link.href} className="font-mono text-sm">
+        <MagneticLink href={item.link.href} className="font-sans text-sm">
           {item.link.label}
         </MagneticLink>
       )}

@@ -1,0 +1,36 @@
+{
+  "steady": {
+    "images": [
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/689/516/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/689/513/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/689/514/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/689/515/datas/gallery.jpg"
+    ],
+    "videos": [
+      "https://www.youtube.com/embed/aH168-oegaQ?enablejsapi=1&hl=en_US&rel=0&start=&version=3&wmode=transparent",
+      "https://www.youtube.com/embed/aH168-oegaQ?enablejsapi=1&hl=en_US&rel=0&start=&version=3&wmode=transparent"
+    ]
+  },
+  "punchd": {
+    "images": [
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/202/287/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/202/240/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/202/304/datas/gallery.jpg"
+    ],
+    "videos": [
+      "https://www.youtube.com/embed/d49yg10k-UM?enablejsapi=1&hl=en_US&rel=0&start=&version=3&wmode=transparent",
+      "https://www.youtube.com/embed/d49yg10k-UM?enablejsapi=1&hl=en_US&rel=0&start=&version=3&wmode=transparent"
+    ]
+  },
+  "larp": {
+    "images": [
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/394/016/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/394/015/datas/gallery.jpg",
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/394/017/datas/gallery.jpg"
+    ],
+    "videos": [
+      "https://www.youtube.com/embed/WzPR8KQzqIA?enablejsapi=1&hl=en_US&rel=0&start=&version=3&wmode=transparent",
+      "https://www.youtube.com/embed/WzPR8KQzqIA?enablejsapi=1&hl=en_US&rel=0&start=&version=3&wmode=transparent"
+    ]
+  }
+}

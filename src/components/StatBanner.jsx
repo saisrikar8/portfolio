@@ -14,7 +14,7 @@ export default function StatBanner() {
       <div className="relative left-1/2 w-screen -translate-x-1/2">
         <div className="bg-berkeley-blue text-white py-20 md:py-28">
           <div className="max-w-7xl mx-auto px-8 md:px-24">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-white/50 mb-12">
+            <p className="font-sans text-xs uppercase tracking-[0.3em] text-white/50 mb-12">
               Selected Results
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -24,7 +24,7 @@ export default function StatBanner() {
                     {stat.value}
                   </div>
                   <p className="text-white/70 leading-relaxed max-w-[30ch]">{stat.label}</p>
-                  <p className="font-mono text-xs uppercase tracking-widest text-white/40 mt-3">
+                  <p className="font-sans text-xs uppercase tracking-widest text-white/40 mt-3">
                     {stat.tag}
                   </p>
                 </div>

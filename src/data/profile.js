@@ -15,7 +15,7 @@ export const research = [
   {
     id: 'hermes',
     venue: 'IEEE',
-    date: 'Jan 2026',
+    date: '2025',
     title:
       'HERMES: An XGBoost Approach to Detecting Low-Quality Radio Transmissions on Martian Missions',
     description:
@@ -31,7 +31,7 @@ export const research = [
   {
     id: 'selene',
     venue: 'Springer Nature',
-    date: 'Jul 2026',
+    date: 'Jun 2026',
     title: 'SELENE: A Deep Learning Model for Predicting Lunar Absorbed Radiation Dose Rates',
     description:
       'A data-driven alternative to Monte Carlo radiation simulators, trained on over 27,000 hours of spacecraft measurements. SELENE maps upstream ACE particle flux to the dose rate recorded by LRO/CRaTER, and uses Monte Carlo Dropout over 100 stochastic passes to report how much each prediction can be trusted — critical safety margin for prolonged human exploration.',

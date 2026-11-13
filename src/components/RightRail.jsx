@@ -40,7 +40,7 @@ export default function RightRail() {
       {research.map((item, i) => (
         <div
           key={item.id}
-          className="absolute right-0 text-right font-mono text-sm text-on-surface-variant"
+          className="absolute right-0 text-right font-sans text-sm text-on-surface-variant"
           style={{ top: researchTops[i] ?? 0 }}
         >
           <span className="block text-on-surface font-serif italic text-base">{item.venue}</span>
@@ -51,7 +51,7 @@ export default function RightRail() {
       {projects.map((item, i) => (
         <div
           key={item.id}
-          className="absolute right-0 text-right font-mono text-sm text-on-surface-variant"
+          className="absolute right-0 text-right font-sans text-sm text-on-surface-variant"
           style={{ top: projectTops[i] ?? 0 }}
         >
           <span className="block text-on-surface font-serif italic text-base">{item.status}</span>

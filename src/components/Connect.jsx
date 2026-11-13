@@ -26,7 +26,7 @@ function ConnectCard({ href, label, Icon, name, delay }) {
       aria-label={name}
     >
       <Icon className="w-12 h-12 mb-4 text-on-surface" />
-      <span className="text-sm font-mono uppercase tracking-widest opacity-70">{label}</span>
+      <span className="text-sm font-sans uppercase tracking-widest opacity-70">{label}</span>
     </a>
   )
 }

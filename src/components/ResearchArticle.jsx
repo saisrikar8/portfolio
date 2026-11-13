@@ -6,7 +6,7 @@ export default function ResearchArticle({ item }) {
 
   return (
     <article className="relative interactable card-jump" ref={ref}>
-      <div className="md:hidden mb-2 font-mono text-sm text-on-surface-variant">
+      <div className="md:hidden mb-2 font-sans text-sm text-on-surface-variant">
         {item.date} / {item.venue}
       </div>
       <h3 className="publication-title font-light mb-4">

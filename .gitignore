@@ -4,3 +4,4 @@ dist
 *.local
 .compare
 .idea
+/docs/design/*.png

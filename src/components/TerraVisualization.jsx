@@ -54,7 +54,7 @@ export default function TerraVisualization({ models }) {
                     style={{ height: `${model.r2 * progress * 100}%` }}
                   />
                 </span>
-                <span className="terra-bar-name font-mono text-[10px] text-on-surface">{model.name}</span>
+                <span className="terra-bar-name font-sans text-[10px] text-on-surface">{model.name}</span>
               </button>
             )
           })}

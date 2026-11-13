@@ -53,3 +53,9 @@ Publication details verified against publisher-supplied Crossref records on Nove
 - SELENE: Springer Nature Switzerland, Emerging Trends in Data Science, Information and Knowledge Engineering, pp. 90–107. DOI https://doi.org/10.1007/978-3-032-22196-4_7. Metadata: https://api.crossref.org/works/10.1007/978-3-032-22196-4_7. Online publication June 19, 2026; print volume year 2027. Site explicitly labels online publication to avoid conflating the dates.
 
 Both cards now have plain publication metadata, a DOI-linked Read paper action, and a separate repository link. No category badge was restored.
+
+## Contact, entrance motion, and mobile icon follow-up
+
+- Main-site contact buttons open native modal options for Gmail, the configured mail app, or copying/selecting the address. The email address remains unchanged. Desktop browser checks verified the Gmail URL, copy success, and Escape dismissal before the browser automatic-review usage limit blocked further inspection.
+- IntersectionObserver triggers one-time fades/slight rises. Content remains visible without observer support. Animations respect system reduced motion and `motion off`; completed/canceled animation classes are removed so the floating terminal is not trapped in an animated ancestor's stacking context. Its own wrapper only fades, never translates.
+- Main-site decorative/control glyphs are inline SVGs from `UiIcon.jsx`, preventing platform emoji substitution. Static React rendering verified 62 SVG icons and no remaining emoji-capable decorative glyphs in the main-site markup. Build and whitespace checks passed. Final mobile visual recheck was unavailable because of the browser review usage limit.

@@ -59,3 +59,8 @@ Both cards now have plain publication metadata, a DOI-linked Read paper action, 
 - Main-site contact buttons open native modal options for Gmail, the configured mail app, or copying/selecting the address. The email address remains unchanged. Desktop browser checks verified the Gmail URL, copy success, and Escape dismissal before the browser automatic-review usage limit blocked further inspection.
 - IntersectionObserver triggers one-time fades/slight rises. Content remains visible without observer support. Animations respect system reduced motion and `motion off`; completed/canceled animation classes are removed so the floating terminal is not trapped in an animated ancestor's stacking context. Its own wrapper only fades, never translates.
 - Main-site decorative/control glyphs are inline SVGs from `UiIcon.jsx`, preventing platform emoji substitution. Static React rendering verified 62 SVG icons and no remaining emoji-capable decorative glyphs in the main-site markup. Build and whitespace checks passed. Final mobile visual recheck was unavailable because of the browser review usage limit.
+
+## Recall (November 18, 2026)
+- Product copy verified against https://recall.ssrikar.dev and https://github.com/saisrikar8/recall.
+- Gallery: public repository `docs/screenshots/library.png`, `search.png`, and `quick-search.png`, copied to `public/media/recall-*.png`. These show the desktop app with illustrative demo files, not retrieval benchmarks.
+- Source: https://github.com/saisrikar8/recall; product and desktop downloads: https://recall.ssrikar.dev.

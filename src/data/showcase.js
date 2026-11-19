@@ -7,6 +7,7 @@ export const featuredResearch=[
  ['selene-dropout.png','MC Dropout: predicted vs. true values'],['selene-uncertainty.png','Predictive variance vs. absolute error'],['selene-training.png','Neural network training curve'],['selene-predictions.png','ANN: predicted vs. true values']].map(([file,caption])=>({src:'/media/'+file,caption,href:seleneSource})),note:'Model comparison values are reported in the repository README. Original prediction, uncertainty, and training figures remain available in the repository.'}
 ]
 export const projectMedia={
+ recall:{images:[['library','Desktop library and Markdown preview'],['search','Code search with matching source lines'],['quick-search','Quick search with PDF preview']].map(([file,label])=>({src:`/media/recall-${file}.png`,caption:`Recall · ${label} · demo files`,href:'https://github.com/saisrikar8/recall#desktop-quick-start'}))},
  steady:{video:'aH168-oegaQ',images:[2,3,4,1].map((n,i)=>({src:`/media/steady-${n}.jpg`,caption:['Steady Hands · procedure results & motion analysis','Steady Hands · surgical simulation','Steady Hands · training interface','Steady Hands · project gallery'][i],href:'https://devpost.com/software/steady-hands-80stdj'}))},
  punchd:{video:'d49yg10k-UM',images:[1,2,3].map(n=>({src:`/media/punchd-${n}.jpg`,caption:`Punchd · product screenshot ${n}`,href:'https://devpost.com/software/punchd'}))},
  larp:{video:'WzPR8KQzqIA',images:[1,2,3].map(n=>({src:`/media/larp-${n}.jpg`,caption:`LARPbox TV · game screenshot ${n}`,href:'https://devpost.com/software/larpbox-tv'}))},

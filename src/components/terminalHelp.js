@@ -1,6 +1,6 @@
 export const commandHelp={
  help:'help [command]\nShow the full guide, or help for one command.\nExamples: help go · help move · help theme\nYou can also use: theme --help',
- go:'go <destination>\nJump to a section or project; on desktop the terminal stays on screen. On phones it stays in its original position.\n\nSections: research, projects, experience, contact, top\nProjects: hermes, selene, terra, robot, steady, punchd, larp\n\nExamples: go research · go selene · go contact',
+ go:'go <destination>\nJump to a section or project; on desktop the terminal stays on screen. On phones it stays in its original position.\n\nSections: research, projects, experience, contact, top\nProjects: hermes, selene, terra, robot, steady, punchd, larp, recall\n\nExamples: go research · go selene · go contact',
  scroll:'scroll <up | down | top | bottom | pixels>\nScroll the page. A positive number goes down; negative goes up.\nNumeric range: -10000 to 10000. Default: down.\nExamples: scroll down · scroll -300 · scroll bottom',
  dock:'dock <left | right>\nDesktop only: pin the terminal near a bottom corner. On phones it stays in place. It stays visible while scrolling.\nExamples: dock left · dock right\nUse home to return it to the hero.',
  home:'home\nReturn the terminal to its original position and size, and return to the top of the page. Page colors and card order stay as they are.\nUse reset to restore everything.',
@@ -13,7 +13,7 @@ export const commandHelp={
  layout:'layout <cozy | compact>\nChange the spacing between sections and inside cards.\nExamples: layout compact · layout cozy',
  motion:'motion <on | off>\nEnable or disable page animations and transitions. Your device’s reduced-motion preference always takes priority.\nExamples: motion off · motion on',
  shuffle:'shuffle <projects | research>\nReorder project cards, or swap HERMES and SELENE. Content and links stay with their cards.\nExamples: shuffle projects · shuffle research\nUse reset to restore the original order.',
- spotlight:'spotlight <project | off>\nHighlight a project and navigate to it.\nProjects: hermes, selene, terra, robot, steady, punchd, larp.\nExamples: spotlight hermes · spotlight off',
+ spotlight:'spotlight <project | off>\nHighlight a project and navigate to it.\nProjects: hermes, selene, terra, robot, steady, punchd, larp, recall.\nExamples: spotlight hermes · spotlight off',
  party:'party\nShow a brief confetti effect. It respects motion off and your device’s reduced-motion preference.',
  whoami:'whoami\nShow a short introduction to Sai Srikar Tummala.',
  ls:'ls\nList the sections and projects you can visit with go.',
